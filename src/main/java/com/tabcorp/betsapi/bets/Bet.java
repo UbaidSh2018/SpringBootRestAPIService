@@ -1,5 +1,8 @@
 package com.tabcorp.betsapi.bets;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +13,8 @@ import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bet {
 
     @Id
@@ -30,7 +35,6 @@ public class Bet {
 
     @DecimalMin(message = "Amount must be greater than 0.00", value = "0.00")
     private double amount;
-
 
     public Bet(long customerId,
                LocalDateTime dateTime,
