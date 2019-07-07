@@ -3,7 +3,10 @@ package com.tabcorp.betsapi.bets;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,8 +28,21 @@ public class Bet {
     @Positive(message = "Please provide a Number greater than zero")
     private long propNumber;
 
-    @DecimalMin(message = "Amount must be greater than 0.00" , value = "0.00")
+    @DecimalMin(message = "Amount must be greater than 0.00", value = "0.00")
     private double amount;
+
+
+    public Bet(long customerId,
+               LocalDateTime dateTime,
+               String betType,
+               long propNumber,
+               double amount) {
+        this.customerId = customerId;
+        this.dateTime = dateTime;
+        this.betType = betType;
+        this.propNumber = propNumber;
+        this.amount = amount;
+    }
 
     public long getCustomerId() {
         return customerId;
