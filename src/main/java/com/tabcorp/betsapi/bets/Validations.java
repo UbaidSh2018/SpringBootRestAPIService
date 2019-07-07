@@ -19,14 +19,14 @@ public class Validations {
     }
 
     static boolean isBetValid(Bet bet) {
-        return (isBetTypeValid(bet.getBetType())
+        return (
+                isBetTypeValid(bet.getBetType())
                 && !exceedsMaxAmount(bet.getAmount())
                 && isDateValid(bet.getDateTime())
         );
     }
 
     private static boolean isBetTypeValid(String betType) {
-
         return BET_TYPE.containsKey(betType.toUpperCase());
     }
 
