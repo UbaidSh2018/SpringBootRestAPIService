@@ -1,7 +1,6 @@
 package com.tabcorp.betsapi.config;
 
 import com.tabcorp.betsapi.bets.Bet;
-import com.tabcorp.betsapi.reports.ReportsRepository;
 import com.tabcorp.betsapi.reports.ReportsService;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,12 +18,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -57,9 +53,11 @@ public class SpringSecurityIntegrationTest {
     }
 
     @Test
-    public void test_spring_security_without_login_should_throw_401() throws Exception{
+    public void test_spring_security_without_login_should_throw_401() throws Exception {
         mockMvc.perform(get("/bets"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
     }
+
+
 }
