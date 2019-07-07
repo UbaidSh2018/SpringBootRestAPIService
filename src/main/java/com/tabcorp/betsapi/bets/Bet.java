@@ -13,14 +13,19 @@ public class Bet {
     @GeneratedValue
     private long betId;
 
+    @Positive(message = "Please provide a digit greater than zero")
     private long customerId;
 
+    @NotNull(message = "Please provide a Local Date Time")
     private LocalDateTime dateTime;
 
+    @NotEmpty(message = "Please provide a Bet Type")
     private String betType;
 
+    @Positive(message = "Please provide a Number greater than zero")
     private long propNumber;
 
+    @DecimalMin(message = "Amount must be greater than 0.00" , value = "0.00")
     private double amount;
 
     public long getCustomerId() {

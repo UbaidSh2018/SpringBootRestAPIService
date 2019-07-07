@@ -22,9 +22,9 @@ public class BetsController {
     @PostMapping(value = "/bets")
     @ResponseStatus(HttpStatus.CREATED)
     public void createBets(@Valid @RequestBody Bet newBet){
-      
+        if(Validations.isBetValid(newBet)){
             service.save(newBet);
-
+        }
     }
 
 
