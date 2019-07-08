@@ -1,6 +1,7 @@
 package com.tabcorp.betsapi.bets;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bet {
@@ -36,55 +38,4 @@ public class Bet {
     @DecimalMin(message = "Amount must be greater than 0.00", value = "0.00")
     private double amount;
 
-    public Bet(long customerId,
-               LocalDateTime dateTime,
-               String betType,
-               long propNumber,
-               double amount) {
-        this.customerId = customerId;
-        this.dateTime = dateTime;
-        this.betType = betType;
-        this.propNumber = propNumber;
-        this.amount = amount;
-    }
-
-    public long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public String getBetType() {
-        return betType;
-    }
-
-    public void setBetType(String betType) {
-        this.betType = betType;
-    }
-
-    public long getPropNumber() {
-        return propNumber;
-    }
-
-    public void setPropNumber(long propNumber) {
-        this.propNumber = propNumber;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 }

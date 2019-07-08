@@ -19,6 +19,11 @@ public class BetsController {
         this.service = service;
     }
 
+    @GetMapping(value = "/")
+    public String welcome(){
+        return "Welcome to TabCorp";
+        }
+
     @PostMapping(value = "/bets")
     @ResponseStatus(HttpStatus.CREATED)
     public void createBets(@Valid @RequestBody Bet newBet){

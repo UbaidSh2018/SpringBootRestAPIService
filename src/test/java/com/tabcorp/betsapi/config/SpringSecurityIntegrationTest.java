@@ -37,7 +37,12 @@ public class SpringSecurityIntegrationTest {
 
     @Before
     public void setUp() {
-        Bet firstBet = new Bet(1L, LocalDateTime.now(), "WIN", 20L, 100.50);
+        Bet firstBet = new Bet();
+        firstBet.setCustomerId(1L);
+        firstBet.setDateTime(LocalDateTime.now());
+        firstBet.setBetType("WIN");
+        firstBet.setPropNumber(20L);
+        firstBet.setAmount(100.50);
         List<Bet> bets = new ArrayList<>();
         bets.add(firstBet);
         when(mockService.getAllBets()).thenReturn(bets);
@@ -46,7 +51,6 @@ public class SpringSecurityIntegrationTest {
     @WithMockUser("USER")
     @Test
     public void test_spring_security_with_user_login() throws Exception {
-
         mockMvc.perform(get("/bets"))
                 .andDo(print())
                 .andExpect(status().isOk());

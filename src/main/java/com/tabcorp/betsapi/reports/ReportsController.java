@@ -14,8 +14,8 @@ public class ReportsController {
     private ReportsService service;
 
     @Autowired
-    public ReportsController(ReportsService reportService){
-        this.service = reportService;
+    public ReportsController(ReportsService service){
+        this.service = service;
     }
 
     @GetMapping(value = "/bets")
@@ -23,12 +23,12 @@ public class ReportsController {
         return service.getAllBets();
     }
 
-    @GetMapping(value = "/reports/bettype/{betType}")
+    @GetMapping(value = "/reports/investment/bt/{betType}")
     public double investmentPerBetType(@PathVariable String betType) {
         return service.investmentPerBetType(betType);
     }
 
-    @GetMapping(value = "/reports/customer/{customerId}")
+    @GetMapping(value = "/reports/investment/cust/{customerId}")
     public double investmentPerCustomerId(@PathVariable Long customerId) {
         return service.investmentPerCustomerId(customerId);
     }

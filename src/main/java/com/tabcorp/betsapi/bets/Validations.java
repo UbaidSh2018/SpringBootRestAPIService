@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Validations {
+class Validations {
 
     private static final Map<String, Integer> BET_TYPE = new HashMap<>();
     private static double maxAmount = 20000.00;
@@ -34,6 +34,12 @@ public class Validations {
         return betAmount > maxAmount;
     }
 
+
+
+    /**
+     * If the duration between bet posted and current time is more than 30 secs, a bet is deemed invalid.
+     * This is to prevent bets that were created in the past from being posted.
+     */
     private static boolean isDateValid(LocalDateTime date) {
         LocalDateTime now = LocalDateTime.now();
         long seconds = ChronoUnit.SECONDS.between(date, now);
@@ -43,6 +49,8 @@ public class Validations {
     public static void changeMaxAmount(double newMaxAmount) {
         maxAmount = newMaxAmount;
     }
+
+
 
 
 }
